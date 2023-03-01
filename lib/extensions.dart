@@ -1,9 +1,11 @@
-import 'dart:math';
-
 extension RootNumExtension on num {
   num numberRoot(int n, double eps) {
     num calcIter(num a) {
-      return ((n - 1) * a + this / pow(a, (n - 1))) / n;
+      var b = a;
+      for (var i = 1; i < n - 1; i++) {
+        b *= a;
+      }
+      return ((n - 1) * a + this / b) / n;
     }
     var x = this;
     var xNext = calcIter(x);
